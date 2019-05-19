@@ -25,19 +25,19 @@ import ReactDOM from "react-dom";
 
 
 class App extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { lat: null };
-        
+    // constructor(props) {
+    //     super(props);
+    //     this.state = { lat: null, errorMessage:'' }; 
+    // }
+        // -------^^^^^SAME THING^^^^^^------------
+    state = { lat: null, errorMessage:''};
 
+    //  --------------------------------------------
+
+    componentDidMount(){
         window.navigator.geolocation.getCurrentPosition(
-            (position) => {
-                this.setState({ lat: position.coords.latitude, errorMessage:'' });
-            },
-           
-            (err) => {
-                this.setState({ errorMessage:err.message })
-            }
+            (position) => this.setState({ lat: position.coords.latitude, errorMessage:'' }), 
+            (err) => this.setState({ errorMessage:err.message })
           );
     }
     
@@ -45,7 +45,7 @@ class App extends React.Component {
 
     render() {
         if(this.state.errorMessage && !this.state.lat) {
-            return <div>Error: {this.state.errorMessage}</div>
+            return <div> Error: {this.state.errorMessage}</div>;
         }
 
         if(!this.state.errorMessage && this.state.lat) {
