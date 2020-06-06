@@ -4,14 +4,10 @@ import SeasonDisplay from "./SeasonDisplay";
 import Spinner from "./Spinner";
 
 class App extends React.Component {
-  // constructor(props) {
-  //     super(props);
-  //     this.state = { lat: null, errorMessage:'' };
-  // }
-  // -------^^^^^SAME THING^^^^^^------------
+ 
   state = { lat: null, errorMessage: "" };
 
-  //  --------------------------------------------
+
 
   componentDidMount() {
     window.navigator.geolocation.getCurrentPosition(
